@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb57968b-794f-4531-b395-c1227748abc3" name="Changes" comment="Tp 2 + début 3">
+    <list default="true" id="fb57968b-794f-4531-b395-c1227748abc3" name="Changes" comment="Changemement de couleur">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/ensisa/tp/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ensisa/tp/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/ensisa/tp/model/CModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ensisa/tp/model/CModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/ensisa/tp/view/CEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ensisa/tp/view/CEditor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/ensisa/tp/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/ensisa/tp/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/ensisa/tp/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/ensisa/tp/main-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/ensisa/tp/model/CModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/ensisa/tp/model/CModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/ensisa/tp/view/CEditor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/ensisa/tp/view/CEditor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +117,23 @@
       <option name="project" value="LOCAL" />
       <updated>1767886142516</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Changemement de couleur">
+      <option name="closed" value="true" />
+      <created>1767888173344</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1767888173344</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Changemement de couleur">
+      <option name="closed" value="true" />
+      <created>1767888297517</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1767888297517</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,7 +142,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Test" />
     <MESSAGE value="Tp 2 + début 3" />
-    <option name="LAST_COMMIT_MESSAGE" value="Tp 2 + début 3" />
+    <MESSAGE value="Changemement de couleur" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changemement de couleur" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

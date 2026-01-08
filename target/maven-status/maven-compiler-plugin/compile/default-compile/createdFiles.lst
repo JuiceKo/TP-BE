@@ -2,5 +2,6 @@ fr\ensisa\tp\MainController.class
 fr\ensisa\Main.class
 fr\ensisa\tp\view\CEditor.class
 module-info.class
+fr\ensisa\tp\view\CEditor$Frame.class
 fr\ensisa\tp\App.class
 fr\ensisa\tp\model\CModel.class

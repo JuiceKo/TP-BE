@@ -1,6 +1,7 @@
 package fr.ensisa.tp.view;
 
 import fr.ensisa.tp.model.CModel;
+import javafx.beans.InvalidationListener;
 import javafx.scene.Group;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -13,9 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class CEditor extends Pane {
-    private static final double PADDING = 30;
-    private static final double HANDLE_R = 5;
-    private static final double FIXED_SIZE = 300;
+
+    private static final double PADDING = 30.0;
+    private static final double HANDLE_R = 5.0;
+    private static final double FIXED_SIZE = 300.0;
 
     private final CModel model;
 
@@ -24,8 +26,8 @@ public final class CEditor extends Pane {
     private final Line axisY = new Line();
     private final Polyline curve = new Polyline();
     private final List<Circle> handles = new ArrayList<>();
-    private Runnable onCurveChanged;
 
+    private Runnable onCurveChanged;
     private int draggedIndex = -1;
 
     public CEditor(CModel model, Color curveColor) {
@@ -46,15 +48,21 @@ public final class CEditor extends Pane {
         drawing.getChildren().addAll(axisX, axisY, curve);
 
         createHandles();
+        installModelListeners();
+        installMouseHandlers();
 
-        widthProperty().addListener((obs, o, n) -> redraw());
-        heightProperty().addListener((obs, o, n) -> redraw());
+        widthProperty().addListener((obs, o, n) -> redrawAll());
+        heightProperty().addListener((obs, o, n) -> redrawAll());
 
-        redraw();
+        redrawAll();
     }
 
     public CEditor(CModel model) {
         this(model, Color.BLACK);
+    }
+
+    public void setOnCurveChanged(Runnable r) {
+        this.onCurveChanged = r;
     }
 
     private void createHandles() {
@@ -62,102 +70,139 @@ public final class CEditor extends Pane {
             Circle c = new Circle(HANDLE_R);
             c.setFill(Color.LIGHTGRAY);
             c.setStroke(Color.DARKGRAY);
-
-            final int idx = i;
-            c.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> onPress(idx, e));
-            c.addEventHandler(MouseEvent.MOUSE_DRAGGED, e -> onDrag(idx, e));
-            c.addEventHandler(MouseEvent.MOUSE_RELEASED, e -> onRelease(idx, e));
-
             handles.add(c);
             drawing.getChildren().add(c);
         }
     }
 
-    private void onPress(int idx, MouseEvent e) {
-        draggedIndex = idx;
-        e.consume();
+    private void installModelListeners() {
+        InvalidationListener l = obs -> {
+            redrawCurve();
+            redrawHandles();
+        };
+
+        for (int i = 0; i < model.getControlPointsCount(); i++) {
+            model.yProperty(i).addListener(l);
+        }
     }
 
-    private void onDrag(int idx, MouseEvent e) {
-        if (draggedIndex != idx) return;
+    private void installMouseHandlers() {
+        addEventHandler(MouseEvent.MOUSE_PRESSED, this::mousePressed);
+        addEventHandler(MouseEvent.MOUSE_DRAGGED, this::mouseDragged);
+        addEventHandler(MouseEvent.MOUSE_RELEASED, this::mouseReleased);
+    }
+
+    private void mousePressed(MouseEvent e) {
+        int idx = findHandleAt(e.getX(), e.getY());
+        draggedIndex = idx;
+        if (draggedIndex != -1) e.consume();
+    }
+
+    private void mouseDragged(MouseEvent e) {
+        if (draggedIndex == -1) return;
 
         int newY = valueYFromPixel(e.getY());
-        model.setY(idx, newY);
+        model.setY(draggedIndex, newY);
+
         if (onCurveChanged != null) onCurveChanged.run();
 
-        redraw();
         e.consume();
     }
 
-    private void onRelease(int idx, MouseEvent e) {
+    private void mouseReleased(MouseEvent e) {
         draggedIndex = -1;
         e.consume();
     }
 
-    public void redraw() {
-        double w = getWidth();
-        double h = getHeight();
+    private int findHandleAt(double x, double y) {
+        for (int i = 0; i < handles.size(); i++) {
+            Circle c = handles.get(i);
+            double dx = x - c.getCenterX();
+            double dy = y - c.getCenterY();
+            if (dx * dx + dy * dy <= (HANDLE_R + 3) * (HANDLE_R + 3)) return i;
+        }
+        return -1;
+    }
 
-        double size = Math.max(50, Math.min(w, h) - 2 * PADDING);
-        double left = PADDING;
-        double top = PADDING;
-        double right = left + size;
-        double bottom = top + size;
+    private void redrawAll() {
+        redrawAxes();
+        redrawCurve();
+        redrawHandles();
+    }
 
-        axisX.setStartX(left);
-        axisX.setStartY(bottom);
-        axisX.setEndX(right);
-        axisX.setEndY(bottom);
+    private void redrawAxes() {
+        Frame f = frame();
 
-        axisY.setStartX(left);
-        axisY.setStartY(bottom);
-        axisY.setEndX(left);
-        axisY.setEndY(top);
+        axisX.setStartX(f.left);
+        axisX.setStartY(f.bottom);
+        axisX.setEndX(f.right);
+        axisX.setEndY(f.bottom);
+
+        axisY.setStartX(f.left);
+        axisY.setStartY(f.bottom);
+        axisY.setEndX(f.left);
+        axisY.setEndY(f.top);
+    }
+
+    private void redrawCurve() {
+        Frame f = frame();
 
         curve.getPoints().clear();
         for (int x = 0; x <= 255; x++) {
-            double yd = model.eval(x);
-            int y = CModel.clamp255((int) Math.round(yd));
-
-            double px = pixelXFromValue(x, left, size);
-            double py = pixelYFromValue(y, top, size);
-
-            curve.getPoints().addAll(px, py);
+            int y = CModel.clamp255((int) Math.round(model.eval(x)));
+            curve.getPoints().addAll(pixelXFromValue(x, f), pixelYFromValue(y, f));
         }
+    }
+
+    private void redrawHandles() {
+        Frame f = frame();
 
         for (int i = 0; i < handles.size(); i++) {
             int x = model.getX(i);
             int y = model.getY(i);
-
-            double px = pixelXFromValue(x, left, size);
-            double py = pixelYFromValue(y, top, size);
-
-            handles.get(i).setCenterX(px);
-            handles.get(i).setCenterY(py);
+            Circle c = handles.get(i);
+            c.setCenterX(pixelXFromValue(x, f));
+            c.setCenterY(pixelYFromValue(y, f));
         }
     }
 
-    private static double pixelXFromValue(int x, double left, double size) {
-        return left + (x / 255.0) * size;
+    private double pixelXFromValue(int x, Frame f) {
+        return f.left + (x / 255.0) * f.size;
     }
 
-    private static double pixelYFromValue(int y, double top, double size) {
-        return top + (1.0 - y / 255.0) * size;
+    private double pixelYFromValue(int y, Frame f) {
+        return f.top + (1.0 - y / 255.0) * f.size;
     }
 
     private int valueYFromPixel(double py) {
-        double w = getWidth();
-        double h = getHeight();
-
-        double size = Math.max(50, Math.min(w, h) - 2 * PADDING);
-        double top = PADDING;
-
-        double t = (py - top) / size;
+        Frame f = frame();
+        double t = (py - f.top) / f.size;
         double y = (1.0 - t) * 255.0;
-
         return CModel.clamp255((int) Math.round(y));
     }
 
-    public void setOnCurveChanged(Runnable r) { this.onCurveChanged = r; }
+    private Frame frame() {
+        double w = getWidth();
+        double h = getHeight();
+        double size = Math.max(50.0, Math.min(w, h) - 2.0 * PADDING);
+        double left = PADDING;
+        double top = PADDING;
+        return new Frame(left, top, size);
+    }
 
+    private static final class Frame {
+        final double left;
+        final double top;
+        final double size;
+        final double right;
+        final double bottom;
+
+        Frame(double left, double top, double size) {
+            this.left = left;
+            this.top = top;
+            this.size = size;
+            this.right = left + size;
+            this.bottom = top + size;
+        }
+    }
 }
