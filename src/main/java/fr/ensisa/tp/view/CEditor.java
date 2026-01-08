@@ -24,6 +24,7 @@ public final class CEditor extends Pane {
     private final Line axisY = new Line();
     private final Polyline curve = new Polyline();
     private final List<Circle> handles = new ArrayList<>();
+    private Runnable onCurveChanged;
 
     private int draggedIndex = -1;
 
@@ -82,6 +83,7 @@ public final class CEditor extends Pane {
 
         int newY = valueYFromPixel(e.getY());
         model.setY(idx, newY);
+        if (onCurveChanged != null) onCurveChanged.run();
 
         redraw();
         e.consume();
@@ -155,4 +157,7 @@ public final class CEditor extends Pane {
 
         return CModel.clamp255((int) Math.round(y));
     }
+
+    public void setOnCurveChanged(Runnable r) { this.onCurveChanged = r; }
+
 }
