@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="fb57968b-794f-4531-b395-c1227748abc3" name="Changes" comment="Changemement de couleur">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/ensisa/tp/model/CModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ensisa/tp/model/CModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/ensisa/tp/view/CEditor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ensisa/tp/view/CEditor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/ensisa/tp/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ensisa/tp/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/ensisa/tp/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/ensisa/tp/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/ensisa/tp/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/ensisa/tp/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/ensisa/tp/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/ensisa/tp/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +30,6 @@
     &quot;assignee&quot;: &quot;JuiceKo&quot;
   }
 }</component>
-  <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="90f3c453-3808-4b18-8878-76d48abfbdc3" />
-  </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/JuiceKo/TP-BE.git&quot;,
@@ -47,6 +46,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.App.executor": "Run",
     "Maven.TP-BE [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",

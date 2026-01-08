@@ -25,6 +25,7 @@ public final class MainController {
     private CModel blueModel;
 
     private Image originalImage;
+    private Image previousImage;
 
     private final int[] lutR = new int[256];
     private final int[] lutG = new int[256];
@@ -60,11 +61,15 @@ public final class MainController {
     }
 
     @FXML
-    private void onMakeLinear() {
+    private void onMakeReset() {
         redModel.makeLinear();
         greenModel.makeLinear();
         blueModel.makeLinear();
         requestFilter();
+
+        originalImage = null;
+        imageView.setImage(previousImage);
+        previousImage = null;
     }
 
     @FXML
@@ -77,7 +82,7 @@ public final class MainController {
 
         File file = fc.showOpenDialog(imageView.getScene().getWindow());
         if (file == null) return;
-
+        previousImage = originalImage;
         originalImage = new Image(file.toURI().toString());
         requestFilter();
     }

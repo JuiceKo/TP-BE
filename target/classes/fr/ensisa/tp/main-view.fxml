@@ -53,7 +53,7 @@
 
     <bottom>
         <ToolBar>
-            <Button text="Linéaire (y = x)" onAction="#onMakeLinear"/>
+            <Button text="Reset graph and image" onAction="#onMakeReset"/>
         </ToolBar>
     </bottom>
 
