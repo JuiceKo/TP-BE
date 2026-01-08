@@ -1,22 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="fr.ensisa.tp.MainController">
+<BorderPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ensisa.tp.MainController">
 
     <top>
         <MenuBar>
             <menus>
                 <Menu text="Fichier">
                     <items>
-                        <MenuItem text="Ouvrir" onAction="#onOpenImage"/>
-                        <SeparatorMenuItem/>
-                        <MenuItem text="Quitter" onAction="#onQuit"/>
+                        <MenuItem onAction="#onOpenImage" text="Ouvrir">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="O" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+                     </accelerator></MenuItem>
+                        <SeparatorMenuItem />
+                        <MenuItem onAction="#onQuit" text="Quitter" />
+                  <SeparatorMenuItem />
+                  <MenuItem onAction="#onQuit" text="Retour">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="Z" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
+                     </accelerator>
+                  </MenuItem>
                     </items>
                 </Menu>
             </menus>
@@ -27,25 +44,25 @@
         <VBox spacing="12" style="-fx-padding: 12;">
             <HBox spacing="12">
                 <VBox spacing="6">
-                    <Label text="Rouge"/>
-                    <StackPane fx:id="redHost" prefWidth="320" prefHeight="320"/>
+                    <Label text="Rouge" />
+                    <StackPane fx:id="redHost" prefHeight="320" prefWidth="320" />
                 </VBox>
 
                 <VBox spacing="6">
-                    <Label text="Vert"/>
-                    <StackPane fx:id="greenHost" prefWidth="320" prefHeight="320"/>
+                    <Label text="Vert" />
+                    <StackPane fx:id="greenHost" prefHeight="320" prefWidth="320" />
                 </VBox>
 
                 <VBox spacing="6">
-                    <Label text="Bleu"/>
-                    <StackPane fx:id="blueHost" prefWidth="320" prefHeight="320"/>
+                    <Label text="Bleu" />
+                    <StackPane fx:id="blueHost" prefHeight="320" prefWidth="320" />
                 </VBox>
             </HBox>
 
-            <Separator/>
+            <Separator />
 
             <StackPane style="-fx-padding: 6; -fx-border-color: #ddd;">
-                <ImageView fx:id="imageView" preserveRatio="true" fitWidth="980" fitHeight="420"/>
+                <ImageView fx:id="imageView" fitHeight="420" fitWidth="980" preserveRatio="true" />
             </StackPane>
         </VBox>
     </center>
@@ -53,7 +70,7 @@
 
     <bottom>
         <ToolBar>
-            <Button text="Reset graph and image" onAction="#onMakeReset"/>
+            <Button onAction="#onMakeReset" text="Reset graph and image" />
         </ToolBar>
     </bottom>
 

@@ -60,6 +60,8 @@ public final class MainController {
         Platform.exit();
     }
 
+//    private void Return(){    }
+
     @FXML
     private void onMakeReset() {
         redModel.makeLinear();

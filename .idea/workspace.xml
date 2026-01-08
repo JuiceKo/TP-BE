@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb57968b-794f-4531-b395-c1227748abc3" name="Changes" comment="Changemement de couleur">
+    <list default="true" id="fb57968b-794f-4531-b395-c1227748abc3" name="Changes" comment="reset image">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/readme.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/ensisa/tp/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ensisa/tp/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fr/ensisa/tp/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/ensisa/tp/main-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/ensisa/tp/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/ensisa/tp/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fr/ensisa/tp/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/ensisa/tp/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767888297517</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="reset image">
+      <option name="closed" value="true" />
+      <created>1767889981745</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1767889981745</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,7 +150,8 @@
     <MESSAGE value="Test" />
     <MESSAGE value="Tp 2 + début 3" />
     <MESSAGE value="Changemement de couleur" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changemement de couleur" />
+    <MESSAGE value="reset image" />
+    <option name="LAST_COMMIT_MESSAGE" value="reset image" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
