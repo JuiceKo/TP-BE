@@ -71,6 +71,7 @@ public final class MainController {
 
         originalImage = null;
         imageView.setImage(previousImage);
+        originalImage = previousImage;
         previousImage = null;
     }
 
