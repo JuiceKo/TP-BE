@@ -10,7 +10,6 @@ public final class CModel {
 
     public static final int MIN_N = 4;
     public static final int MAX_N = 8;
-
     private final int n;
     private final int[] xs;
     private final ObservableList<IntegerProperty> ys;
@@ -18,7 +17,7 @@ public final class CModel {
     public CModel(int controlPointsCount) {
         if (controlPointsCount < MIN_N || controlPointsCount > MAX_N) {
             throw new IllegalArgumentException(
-                    "Le nombre de points de contrôle doit être entre " + MIN_N + " et " + MAX_N + "."
+                    "NB point requis : entre " + MIN_N + " et " + MAX_N
             );
         }
         this.n = controlPointsCount;
@@ -32,9 +31,7 @@ public final class CModel {
         }
     }
 
-    public int getControlPointsCount() {
-        return n;
-    }
+    public int getControlPointsCount() {return n;}
 
     public int getX(int i) {
         checkIndex(i);
@@ -64,7 +61,6 @@ public final class CModel {
 
     public double eval(double x) {
         double sum = 0.0;
-
         for (int i = 0; i < n; i++) {
             double li = 1.0;
             for (int j = 0; j < n; j++) {
