@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+
 
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
@@ -12,6 +14,8 @@
             <menus>
                 <Menu text="Fichier">
                     <items>
+                        <MenuItem text="Ouvrir" onAction="#onOpenImage"/>
+                        <SeparatorMenuItem/>
                         <MenuItem text="Quitter" onAction="#onQuit"/>
                     </items>
                 </Menu>
@@ -20,8 +24,32 @@
     </top>
 
     <center>
-        <StackPane fx:id="editorHost" prefWidth="700" prefHeight="500"/>
+        <VBox spacing="12" style="-fx-padding: 12;">
+            <HBox spacing="12">
+                <VBox spacing="6">
+                    <Label text="Rouge"/>
+                    <StackPane fx:id="redHost" prefWidth="320" prefHeight="320"/>
+                </VBox>
+
+                <VBox spacing="6">
+                    <Label text="Vert"/>
+                    <StackPane fx:id="greenHost" prefWidth="320" prefHeight="320"/>
+                </VBox>
+
+                <VBox spacing="6">
+                    <Label text="Bleu"/>
+                    <StackPane fx:id="blueHost" prefWidth="320" prefHeight="320"/>
+                </VBox>
+            </HBox>
+
+            <Separator/>
+
+            <StackPane style="-fx-padding: 6; -fx-border-color: #ddd;">
+                <ImageView fx:id="imageView" preserveRatio="true" fitWidth="980" fitHeight="420"/>
+            </StackPane>
+        </VBox>
     </center>
+
 
     <bottom>
         <ToolBar>
