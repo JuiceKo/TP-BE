@@ -2,6 +2,7 @@ package fr.ensisa.tp.model;
 
 import java.util.Arrays;
 
+
 public final class CModel {
     private final int n;
     private final int[] xs;
